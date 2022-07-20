@@ -7,7 +7,7 @@ import { HeartRateSensor } from "heart-rate";
 import { me as appbit } from "appbit";
 import { today } from "user-activity";
 
-clock.granularity = "minutes";
+clock.granularity = "seconds";
 
 const myLabel = document.getElementById("myLabel");
 const myDate = document.getElementById("myDate");
@@ -43,18 +43,23 @@ clock.ontick = (evt) => {
   let mins = util.zeroPad(today.getMinutes());
   myDate.text = `${dayName}, ${monthNameShort} ${dayNumber}`;
   myLabel.text = `${hours}:${mins}`;
-  updateSteps();
+  
+  updateSteps()
+ if (HeartRateSensor && appbit.permissions.granted("access_heart_rate")) {
+    const hrm = new HeartRateSensor();
+    hrm.addEventListener("reading", () => {
+      myHeart.text = `${hrm.heartRate}`;
+    });
+    display.addEventListener("change", () => {
+      if (display.on) {
+        hrm.start();
+      }
+      else {
+        hrm.stop();
+      }
+    });
+
+    hrm.start();
+  }
 }
-
-if (HeartRateSensor) {
-   const hrm = new HeartRateSensor();
-   hrm.addEventListener("reading", () => {
-     myHeart.text = `${hrm.heartRate}`;
-   });
-   hrm.start();
-} else {
-   console.log("This device does NOT have a HeartRateSensor!");
-}
-
-
 
