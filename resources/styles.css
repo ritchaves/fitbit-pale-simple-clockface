@@ -1,0 +1,44 @@
+.background {
+  viewport-fill: black;
+}
+
+#myDate {
+  font-size: 40;
+    font-family: System-Bold;
+    text-length: 32;
+    text-anchor: middle;
+    x: 50%;
+    y: 15%;
+    fill: #C9B2F2;
+  }
+
+#myLabel {
+  font-size: 80;
+  font-family: System-Bold;
+  text-length: 32;
+  text-anchor: middle;
+  x: 50%;
+  y: 58%;
+  fill: white;
+}
+
+#myHeart {
+  font-size: 40;
+  font-family: System-Bold;
+  text-length: 32;
+  text-anchor: middle;
+  x: 29%;
+  y: 90%;
+  fill: #e298c7;
+}
+
+#mySteps {
+  font-size: 40;
+  font-family: System-Bold;
+  text-length: 32;
+  text-anchor: middle;
+  x: 82%;
+  y: 90%;
+  fill: #8ac9f0
+
+}
